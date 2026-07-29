@@ -75,6 +75,7 @@ class JanelaPrincipal(QWidget):
 
         self.botao_gerar = QPushButton("GERAR PDF")
         self.botao_gerar.setFixedHeight(40)
+        self.botao_gerar.clicked.connect(self.gerar_pdf)
 
         layout_principal.addWidget(self.botao_gerar)
 
@@ -98,3 +99,64 @@ class JanelaPrincipal(QWidget):
         if arquivo:
             self.caminho_pdf = arquivo
             self.edit_pdf.setText(arquivo)
+            
+    def gerar_pdf(self):
+
+        if not self.caminho_pdf:
+            QMessageBox.warning(
+                self,
+                "Aviso",
+                "Selecione um arquivo PDF."
+            )
+            return
+
+        lote = self.edit_lote.text().strip()
+
+        if not lote:
+            QMessageBox.warning(
+                self,
+                "Aviso",
+                "Digite o número do lote."
+            )
+            return
+
+        try:
+
+            self.label_status.setText("Gerando PDF...")
+            self.barra.setValue(30)
+
+            pasta = os.path.dirname(self.caminho_pdf)
+
+            nome = os.path.basename(self.caminho_pdf)
+            nome_sem_extensao = os.path.splitext(nome)[0]
+
+            pdf_saida = os.path.join(
+                pasta,
+                f"{nome_sem_extensao}_LOTE_{lote}.pdf"
+            )
+
+            adicionar_lote(
+                self.caminho_pdf,
+                pdf_saida,
+                lote
+            )
+
+            self.barra.setValue(100)
+            self.label_status.setText("PDF gerado com sucesso!")
+
+            QMessageBox.information(
+                self,
+                "Sucesso",
+                f"Arquivo salvo em:\n\n{pdf_saida}"
+            )
+
+        except Exception as erro:
+
+            QMessageBox.critical(
+                self,
+                "Erro",
+                str(erro)
+            )
+
+            self.label_status.setText("Erro.")
+            self.barra.setValue(0)
