@@ -1,32 +1,28 @@
-import fitz  # PyMuPDF
-import os
+import pymupdf as fitz
 
 
 def adicionar_lote(pdf_entrada, pdf_saida, numero_lote):
-    """
-    Adiciona o texto 'LOTE X' em todas as páginas do PDF.
-    """
 
     documento = fitz.open(pdf_entrada)
 
     for pagina in documento:
 
-        # Desenha um retângulo preto
-        retangulo = fitz.Rect(360, 10, 510, 40)
+        # Caixa preta
+        caixa = fitz.Rect(10, 10, 140, 35)
 
         pagina.draw_rect(
-            retangulo,
+            caixa,
             color=(0, 0, 0),
             fill=(0, 0, 0)
         )
 
-        # Escreve o texto em branco
+        # Texto branco
         pagina.insert_text(
-            (380, 30),
+            (20, 28),
             f"LOTE {numero_lote}",
-            fontsize=16,
-            color=(1, 1, 1),
-            fontname="helv"
+            fontsize=14,
+            fontname="helv",
+            color=(1, 1, 1)
         )
 
     documento.save(pdf_saida)
