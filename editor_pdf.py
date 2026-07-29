@@ -12,6 +12,8 @@ def adicionar_lote(pdf_entrada, pdf_saida, numero_lote):
 
         print(f"Largura: {largura}")
         print(f"Altura : {altura}")
+        print("Largura:", pagina.rect.width)
+        print("Altura :", pagina.rect.height)
 
         # Marca os quatro cantos
         pagina.insert_text((10, 20), "A", fontsize=20, color=(1, 0, 0))
