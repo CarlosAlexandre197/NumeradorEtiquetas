@@ -20,17 +20,17 @@ def adicionar_lote(pdf_entrada, pdf_saida, numero_lote):
             Y + ALTURA
         )
 
-        pagina.draw_rect(
-            caixa,
-            color=(0, 0, 0),
-            fill=(0, 0, 0)
-        )
+        #pagina.draw_rect(
+            #caixa,
+            #color=(0, 0, 0),
+            #fill=(0, 0, 0)
+        #)
 
         pagina.insert_text(
             (X + 12, Y + 20),
             f"LOTE {numero_lote}",
             fontsize=14,
-            color=(1, 1, 1),
+            color=(0, 0, 0),
             fontname="helv"
         )
 
