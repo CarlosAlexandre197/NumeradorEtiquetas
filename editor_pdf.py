@@ -1,8 +1,8 @@
 import pymupdf as fitz
 
 # Posição da caixa
-X = 155
-Y = 8
+X = 0
+Y = 200
 LARGURA = 75
 ALTURA = 25
 
