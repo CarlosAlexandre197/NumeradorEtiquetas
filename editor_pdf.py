@@ -1,38 +1,23 @@
 import pymupdf as fitz
 
-# Posição da caixa
-X = 395
-Y = 8
-LARGURA = 120
-ALTURA = 28
-
 
 def adicionar_lote(pdf_entrada, pdf_saida, numero_lote):
 
-    documento = fitz.open(pdf_entrada)
+    doc = fitz.open(pdf_entrada)
 
-    for pagina in documento:
+    for pagina in doc:
 
-        caixa = fitz.Rect(
-            X,
-            Y,
-            X + LARGURA,
-            Y + ALTURA
-        )
+        largura = pagina.rect.width
+        altura = pagina.rect.height
 
-        pagina.draw_rect(
-            caixa,
-            color=(0, 0, 0),
-            fill=(0, 0, 0)
-        )
+        print(f"Largura: {largura}")
+        print(f"Altura : {altura}")
 
-        pagina.insert_text(
-            (X + 12, Y + 20),
-            f"LOTE {numero_lote}",
-            fontsize=14,
-            color=(1, 1, 1),
-            fontname="helv"
-        )
+        # Marca os quatro cantos
+        pagina.insert_text((10, 20), "A", fontsize=20, color=(1, 0, 0))
+        pagina.insert_text((largura - 20, 20), "B", fontsize=20, color=(0, 1, 0))
+        pagina.insert_text((10, altura - 20), "C", fontsize=20, color=(0, 0, 1))
+        pagina.insert_text((largura - 20, altura - 20), "D", fontsize=20, color=(1, 0, 1))
 
-    documento.save(pdf_saida)
-    documento.close()
+    doc.save(pdf_saida)
+    doc.close()
