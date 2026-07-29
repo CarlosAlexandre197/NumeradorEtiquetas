@@ -1,3 +1,6 @@
+import os
+from editor_pdf import adicionar_lote
+
 from PyQt6.QtWidgets import (
     QWidget,
     QLabel,
