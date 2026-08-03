@@ -24,6 +24,10 @@ class JanelaPrincipal(QWidget):
         self.setWindowTitle("Numerador de Etiquetas PDF")
         self.setGeometry(300, 200, 600, 300)
 
+from style import ESTILO_JANELA
+
+self.setStyleSheet(ESTILO_JANELA)
+
         self.criar_interface()
 
     def criar_interface(self):
