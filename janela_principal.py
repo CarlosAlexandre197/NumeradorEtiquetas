@@ -91,6 +91,11 @@ botao_pdf.setFixedHeight(40)
         # Botão gerar
 
         self.botao_gerar = QPushButton("GERAR PDF")
+
+from style import BOTAO_AZUL
+
+self.botao_gerar.setStyleSheet(BOTAO_AZUL)
+self.botao_gerar.setFixedHeight(45)
         self.botao_gerar.setFixedHeight(40)
         self.botao_gerar.clicked.connect(self.gerar_pdf)
 
