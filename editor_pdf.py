@@ -34,5 +34,6 @@ def adicionar_lote(pdf_entrada, pdf_saida, numero_lote):
             fontname="helv"
         )
 
+
     documento.save(pdf_saida)
     documento.close()
