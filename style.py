@@ -12,43 +12,51 @@ COR_BRANCA = "#FFFFFF"
 
 FONTE = "Segoe UI"
 
-ESTILO_JANELA = f"""
-QWidget {{
-    background-color: {COR_FUNDO};
-    font-family: {FONTE};
+ESTILO_JANELA = """
+QWidget {
+    background-color: #F5F5F5;
+    color: #212121;
+    font-family: Segoe UI;
     font-size: 10pt;
-}}
+}
 
-QGroupBox {{
+QLabel {
+    color: #212121;
+}
+
+QGroupBox {
     background: white;
     border: 1px solid #D0D0D0;
     border-radius: 8px;
     margin-top: 12px;
     font-weight: bold;
-}}
+    color: #1565C0;
+}
 
-QGroupBox::title {{
+QGroupBox::title {
     subcontrol-origin: margin;
     left: 10px;
     padding: 0 5px;
-}}
+}
 
-QLineEdit {{
+QLineEdit {
+    background: white;
+    color: black;
     border: 1px solid #C5C5C5;
     border-radius: 6px;
     padding: 6px;
-}}
+}
 
-QProgressBar {{
+QProgressBar {
     border: 1px solid #C5C5C5;
     border-radius: 6px;
     text-align: center;
-}}
+    color: black;
+}
 
-QProgressBar::chunk {{
+QProgressBar::chunk {
     background-color: #1565C0;
-    border-radius: 6px;
-}}
+}
 """
 
 BOTAO_AZUL = """

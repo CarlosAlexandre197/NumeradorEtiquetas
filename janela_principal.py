@@ -1,4 +1,5 @@
 import os
+
 from editor_pdf import adicionar_lote
 
 from PyQt6.QtWidgets import (
@@ -14,6 +15,8 @@ from PyQt6.QtWidgets import (
 )
 from PyQt6.QtCore import Qt
 
+from style import ESTILO_JANELA, BOTAO_VERDE, BOTAO_AZUL
+
 
 class JanelaPrincipal(QWidget):
     def __init__(self):
@@ -24,9 +27,7 @@ class JanelaPrincipal(QWidget):
         self.setWindowTitle("Numerador de Etiquetas PDF")
         self.setGeometry(300, 200, 600, 300)
 
-from style import ESTILO_JANELA
-
-self.setStyleSheet(ESTILO_JANELA)
+        self.setStyleSheet(ESTILO_JANELA)
 
         self.criar_interface()
 
@@ -36,22 +37,16 @@ self.setStyleSheet(ESTILO_JANELA)
 
         # Título
         titulo = QLabel("NUMERADOR DE ETIQUETAS PDF")
-titulo.setFixedHeight(60)
-titulo.setAlignment(Qt.AlignmentFlag.AlignCenter)
-
-titulo.setStyleSheet("""
-QLabel{
-    background-color:#1565C0;
-    color:white;
-    font-size:22px;
-    font-weight:bold;
-    border-radius:8px;
-}
-""")
+        titulo.setFixedHeight(60)
         titulo.setAlignment(Qt.AlignmentFlag.AlignCenter)
         titulo.setStyleSheet("""
-            font-size:20px;
-            font-weight:bold;
+            QLabel{
+                background-color:#1565C0;
+                color:white;
+                font-size:22px;
+                font-weight:bold;
+                border-radius:8px;
+            }
         """)
 
         layout_principal.addWidget(titulo)
@@ -63,11 +58,8 @@ QLabel{
         self.edit_pdf.setReadOnly(True)
 
         botao_pdf = QPushButton("Selecionar PDF")
-
-from style import BOTAO_VERDE
-
-botao_pdf.setStyleSheet(BOTAO_VERDE)
-botao_pdf.setFixedHeight(40)
+        botao_pdf.setStyleSheet(BOTAO_VERDE)
+        botao_pdf.setFixedHeight(40)
         botao_pdf.clicked.connect(self.selecionar_pdf)
 
         layout_pdf.addWidget(self.edit_pdf)
@@ -76,7 +68,6 @@ botao_pdf.setFixedHeight(40)
         layout_principal.addLayout(layout_pdf)
 
         # Campo lote
-
         label_lote = QLabel("Número do Lote")
 
         self.edit_lote = QLineEdit()
@@ -86,27 +77,20 @@ botao_pdf.setFixedHeight(40)
         layout_principal.addWidget(self.edit_lote)
 
         # Barra de progresso
-
         self.barra = QProgressBar()
         self.barra.setValue(0)
 
         layout_principal.addWidget(self.barra)
 
         # Botão gerar
-
         self.botao_gerar = QPushButton("GERAR PDF")
-
-from style import BOTAO_AZUL
-
-self.botao_gerar.setStyleSheet(BOTAO_AZUL)
-self.botao_gerar.setFixedHeight(45)
-        self.botao_gerar.setFixedHeight(40)
+        self.botao_gerar.setStyleSheet(BOTAO_AZUL)
+        self.botao_gerar.setFixedHeight(45)
         self.botao_gerar.clicked.connect(self.gerar_pdf)
 
         layout_principal.addWidget(self.botao_gerar)
 
         # Status
-
         self.label_status = QLabel("Aguardando...")
 
         layout_principal.addWidget(self.label_status)
@@ -125,7 +109,7 @@ self.botao_gerar.setFixedHeight(45)
         if arquivo:
             self.caminho_pdf = arquivo
             self.edit_pdf.setText(arquivo)
-            
+
     def gerar_pdf(self):
 
         if not self.caminho_pdf:
