@@ -59,6 +59,11 @@ QLabel{
         self.edit_pdf.setReadOnly(True)
 
         botao_pdf = QPushButton("Selecionar PDF")
+
+from style import BOTAO_VERDE
+
+botao_pdf.setStyleSheet(BOTAO_VERDE)
+botao_pdf.setFixedHeight(40)
         botao_pdf.clicked.connect(self.selecionar_pdf)
 
         layout_pdf.addWidget(self.edit_pdf)
