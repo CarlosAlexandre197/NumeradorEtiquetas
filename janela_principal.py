@@ -31,7 +31,19 @@ class JanelaPrincipal(QWidget):
         layout_principal = QVBoxLayout()
 
         # Título
-        titulo = QLabel("NUMERADOR DE ETIQUETAS")
+        titulo = QLabel("NUMERADOR DE ETIQUETAS PDF")
+titulo.setFixedHeight(60)
+titulo.setAlignment(Qt.AlignmentFlag.AlignCenter)
+
+titulo.setStyleSheet("""
+QLabel{
+    background-color:#1565C0;
+    color:white;
+    font-size:22px;
+    font-weight:bold;
+    border-radius:8px;
+}
+""")
         titulo.setAlignment(Qt.AlignmentFlag.AlignCenter)
         titulo.setStyleSheet("""
             font-size:20px;
