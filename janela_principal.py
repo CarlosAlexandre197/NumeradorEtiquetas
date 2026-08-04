@@ -162,7 +162,10 @@ self.caminho_pdf = ""
 self.barra.setValue(0)
 
 # Atualizar o status
-self.label_status.setText("Aguardando...")
+self.label_status.setText("Aguardardando novo PDF...")
+
+# Colocar o cursor no botão Selecionar PDF
+self.edit_pdf.setFocus()
 
             self.barra.setValue(100)
             self.label_status.setText("PDF gerado com sucesso!")
