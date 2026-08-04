@@ -150,6 +150,19 @@ class JanelaPrincipal(QWidget):
                 pdf_saida,
                 lote
             )
+            
+            # Limpar os campos
+self.edit_pdf.clear()
+self.edit_lote.clear()
+
+# Limpar o caminho do PDF
+self.caminho_pdf = ""
+
+# Reiniciar a barra de progresso
+self.barra.setValue(0)
+
+# Atualizar o status
+self.label_status.setText("Aguardando...")
 
             self.barra.setValue(100)
             self.label_status.setText("PDF gerado com sucesso!")
