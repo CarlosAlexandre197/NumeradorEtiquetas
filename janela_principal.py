@@ -150,22 +150,6 @@ class JanelaPrincipal(QWidget):
                 pdf_saida,
                 lote
             )
-            
-            # Limpar os campos
-self.edit_pdf.clear()
-self.edit_lote.clear()
-
-# Limpar o caminho do PDF
-self.caminho_pdf = ""
-
-# Reiniciar a barra de progresso
-self.barra.setValue(0)
-
-# Atualizar o status
-self.label_status.setText("Aguardardando novo PDF...")
-
-# Colocar o cursor no botão Selecionar PDF
-self.edit_pdf.setFocus()
 
             self.barra.setValue(100)
             self.label_status.setText("PDF gerado com sucesso!")
@@ -175,6 +159,22 @@ self.edit_pdf.setFocus()
                 "Sucesso",
                 f"Arquivo salvo em:\n\n{pdf_saida}"
             )
+
+            # Limpar os campos
+            self.edit_pdf.clear()
+            self.edit_lote.clear()
+
+            # Limpar o caminho do PDF
+            self.caminho_pdf = ""
+
+            # Reiniciar a barra de progresso
+            self.barra.setValue(0)
+
+            # Atualizar o status
+            self.label_status.setText("Aguardando novo PDF...")
+
+            # Colocar o cursor no campo do PDF
+            self.edit_pdf.setFocus()
 
         except Exception as erro:
 
