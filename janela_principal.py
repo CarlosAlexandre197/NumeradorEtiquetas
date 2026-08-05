@@ -82,6 +82,28 @@ class JanelaPrincipal(QWidget):
 
         layout_principal.addWidget(self.barra)
 
+        # Status
+        self.label_status = QLabel("Aguardando...")
+        layout_principal.addWidget(self.label_status)
+
+        # Mensagem de sucesso
+        self.label_mensagem = QLabel("")
+        self.label_mensagem.setWordWrap(True)
+        self.label_mensagem.hide()
+
+        self.label_mensagem.setStyleSheet("""
+        QLabel{
+            background-color:#E8F5E9;
+            color:#2E7D32;
+            border:1px solid #A5D6A7;
+            border-radius:6px;
+            padding:8px;
+            font-size:10pt;
+        }
+        """)
+
+        layout_principal.addWidget(self.label_mensagem)
+
         # Botão gerar
         self.botao_gerar = QPushButton("GERAR PDF")
         self.botao_gerar.setStyleSheet(BOTAO_AZUL)
@@ -89,11 +111,6 @@ class JanelaPrincipal(QWidget):
         self.botao_gerar.clicked.connect(self.gerar_pdf)
 
         layout_principal.addWidget(self.botao_gerar)
-
-        # Status
-        self.label_status = QLabel("Aguardando...")
-
-        layout_principal.addWidget(self.label_status)
 
         self.setLayout(layout_principal)
 
@@ -152,28 +169,21 @@ class JanelaPrincipal(QWidget):
             )
 
             self.barra.setValue(100)
+
             self.label_status.setText("PDF gerado com sucesso!")
 
-            QMessageBox.information(
-                self,
-                "Sucesso",
-                f"Arquivo salvo em:\n\n{pdf_saida}"
+            self.label_mensagem.setText(
+                f"✅ PDF gerado com sucesso!\n\n"
+                f"📄 Arquivo salvo em:\n{pdf_saida}"
             )
+
+            self.label_mensagem.show()
 
             # Limpar os campos
             self.edit_pdf.clear()
             self.edit_lote.clear()
-
-            # Limpar o caminho do PDF
             self.caminho_pdf = ""
 
-            # Reiniciar a barra de progresso
-            self.barra.setValue(0)
-
-            # Atualizar o status
-            self.label_status.setText("Aguardando novo PDF...")
-
-            # Colocar o cursor no campo do PDF
             self.edit_pdf.setFocus()
 
         except Exception as erro:
