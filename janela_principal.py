@@ -179,7 +179,7 @@ class JanelaPrincipal(QWidget):
             )
 
             self.label_mensagem.show()
-            QTimer.singleShot(3000, self.label_mensagem.hide)
+            QTimer.singleShot(3000, self.limpar_mensagem)
 
             # Limpar os campos
             self.edit_pdf.clear()
@@ -198,3 +198,8 @@ class JanelaPrincipal(QWidget):
 
             self.label_status.setText("Erro.")
             self.barra.setValue(0)
+    
+    def limpar_mensagem(self):
+        self.label_mensagem.hide()
+        self.label_status.setText("Aguardando novo PDF...")
+        self.barra.setValue(0)
