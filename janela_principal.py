@@ -13,7 +13,8 @@ from PyQt6.QtWidgets import (
     QMessageBox,
     QProgressBar
 )
-from PyQt6.QtCore import Qt
+
+from PyQt6.QtCore import Qt, QTimer
 
 from style import ESTILO_JANELA, BOTAO_VERDE, BOTAO_AZUL
 
@@ -178,6 +179,7 @@ class JanelaPrincipal(QWidget):
             )
 
             self.label_mensagem.show()
+            QTimer.singleShot(3000, self.label_mensagem.hide)
 
             # Limpar os campos
             self.edit_pdf.clear()
