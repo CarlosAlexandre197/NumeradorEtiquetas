@@ -1,4 +1,7 @@
-# style.py
+
+# ==========================================
+# ESTILOS - NUMERADOR DE ETIQUETAS PDF
+# ==========================================
 
 COR_AZUL = "#1565C0"
 COR_AZUL_HOVER = "#1976D2"
@@ -7,88 +10,118 @@ COR_AZUL_CLICK = "#0D47A1"
 COR_VERDE = "#2E7D32"
 COR_VERDE_HOVER = "#388E3C"
 
-COR_FUNDO = "#F5F5F5"
+COR_FUNDO = "#F1F5F9"
 COR_BRANCA = "#FFFFFF"
+
+COR_TEXTO = "#263238"
+COR_CINZA = "#64748B"
+COR_BORDA = "#DCE3EB"
 
 FONTE = "Segoe UI"
 
 ESTILO_JANELA = """
 QWidget {
-    background-color: #F5F5F5;
-    color: #212121;
-    font-family: Segoe UI;
+    background-color: #F1F5F9;
+    color: #263238;
+    font-family: 'Segoe UI';
     font-size: 10pt;
 }
 
 QLabel {
-    color: #212121;
+    color: #263238;
+    background: transparent;
 }
 
 QGroupBox {
-    background: white;
-    border: 1px solid #D0D0D0;
-    border-radius: 8px;
-    margin-top: 12px;
+    background-color: #FFFFFF;
+    border: 1px solid #DCE3EB;
+    border-radius: 10px;
+    margin-top: 18px;
+    padding: 15px;
     font-weight: bold;
     color: #1565C0;
 }
 
 QGroupBox::title {
     subcontrol-origin: margin;
-    left: 10px;
-    padding: 0 5px;
+    left: 15px;
+    padding: 0 8px;
+    background-color: #FFFFFF;
 }
 
 QLineEdit {
-    background: white;
-    color: black;
-    border: 1px solid #C5C5C5;
-    border-radius: 6px;
-    padding: 6px;
+    background-color: #FFFFFF;
+    color: #263238;
+    border: 1px solid #CBD5E1;
+    border-radius: 8px;
+    padding: 10px;
+    selection-background-color: #1565C0;
+}
+
+QLineEdit:focus {
+    border: 2px solid #1565C0;
 }
 
 QProgressBar {
-    border: 1px solid #C5C5C5;
-    border-radius: 6px;
+    background-color: #E2E8F0;
+    border: none;
+    border-radius: 8px;
+    height: 20px;
     text-align: center;
-    color: black;
+    color: #263238;
+    font-weight: bold;
 }
 
 QProgressBar::chunk {
     background-color: #1565C0;
+    border-radius: 8px;
 }
 """
 
 BOTAO_AZUL = """
-QPushButton{
-    background:#1565C0;
-    color:white;
-    border:none;
-    border-radius:6px;
-    padding:8px;
-    font-weight:bold;
+QPushButton {
+    background-color: #1565C0;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 11px 18px;
+    font-weight: bold;
 }
 
-QPushButton:hover{
-    background:#1976D2;
+QPushButton:hover {
+    background-color: #1976D2;
 }
 
-QPushButton:pressed{
-    background:#0D47A1;
+QPushButton:pressed {
+    background-color: #0D47A1;
+}
+
+QPushButton:disabled {
+    background-color: #94A3B8;
+    color: #E2E8F0;
 }
 """
 
 BOTAO_VERDE = """
-QPushButton{
-    background:#2E7D32;
-    color:white;
-    border:none;
-    border-radius:6px;
-    padding:8px;
-    font-weight:bold;
+QPushButton {
+    background-color: #2E7D32;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 11px 18px;
+    font-weight: bold;
 }
 
-QPushButton:hover{
-    background:#388E3C;
+QPushButton:hover {
+    background-color: #388E3C;
+}
+
+QPushButton:pressed {
+    background-color: #1B5E20;
+}
+
+QPushButton:disabled {
+    background-color: #94A3B8;
+    color: #E2E8F0;
 }
 """
